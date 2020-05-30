@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button x:Name="btnSendMail" Content="Отправить письма"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Margin="240,193,0,0" Width="124" Click="btnSendMail_Click"/>
     </Grid>
 </Window>

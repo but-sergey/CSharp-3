@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,6 +25,29 @@ namespace WpfTestMailServer
         public MainWindow()
         {
             InitializeComponent();
+        }
+        private void btnSendMail_Click(object sender, RoutedEventArgs e)
+        {
+            MailMessage mailMessage = new MailMessage(Settings.FromMail, Settings.ToMail);
+            mailMessage.Subject = "Пробное письмо";
+            mailMessage.Body = "Содержимое пробного письма";
+            mailMessage.IsBodyHtml = false;
+
+            SmtpClient client = new SmtpClient(Settings.SmtpServer, Settings.SmtpPort);
+            client.EnableSsl = true;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new NetworkCredential(Settings.SenderName, Settings.SenderPassword);
+
+            try
+            {
+                client.Send(mailMessage);
+                MessageBox.Show($"Письмо отправлено", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Невозможно отправить письмо ({ex.Message})", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
