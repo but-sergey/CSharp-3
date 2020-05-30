@@ -8,27 +8,27 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            MailMessage mailMessage = new MailMessage(Settings.FROM_MAIL, Settings.TO_MAIL);
+            MailMessage mailMessage = new MailMessage(Settings.FromMail, Settings.ToMail);
             mailMessage.Subject = "Пробное письмо";
             mailMessage.Body = "Содержимое пробного письма";
             mailMessage.IsBodyHtml = false;
 
-            SmtpClient client = new SmtpClient(Settings.SMTP_SERVER, Settings.SMTP_PORT);
+            SmtpClient client = new SmtpClient(Settings.SmtpServer, Settings.SmtpPort);
             client.EnableSsl = true;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
-            var password = Settings.SENDER_PASSWORD;
+            var password = Settings.SenderPassword;
             if (password == string.Empty)
             {
                 Console.Write("Пароль для доступа к аккаунту отправки писем: ");
                 password = Console.ReadLine();
             }
-            client.Credentials = new NetworkCredential(Settings.SENDER_NAME, password);
+            client.Credentials = new NetworkCredential(Settings.SenderName, password);
 
             try
             {
                 client.Send(mailMessage);
-                Console.WriteLine($"Письмо от {Settings.FROM_MAIL} на адрес {Settings.TO_MAIL} отправлено.");
+                Console.WriteLine($"Письмо от {Settings.FromMail} на адрес {Settings.ToMail} отправлено.");
             }
             catch (Exception ex)
             {
