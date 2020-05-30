@@ -18,6 +18,6 @@
         //public static string SenderName = "but-sergey@bk.ru";
         //public static string SenderName = "asketemius";
 
-        public static string SenderPassword = "testpass003";
+        public static string SenderPassword = "";
     }
 }

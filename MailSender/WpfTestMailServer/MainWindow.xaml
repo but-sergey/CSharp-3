@@ -10,5 +10,8 @@
         <Button x:Name="btnSendMail" Content="Отправить письма"
                 HorizontalAlignment="Left" VerticalAlignment="Top"
                 Margin="240,193,0,0" Width="124" Click="btnSendMail_Click"/>
+        <PasswordBox x:Name="passwordBox"
+                     HorizontalAlignment="Left" VerticalAlignment="Top"
+                     Margin="240,170,0,0" Width="124"/>
     </Grid>
 </Window>
