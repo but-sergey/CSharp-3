@@ -5,16 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfTestMailServer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen"
+        Initialized="Window_Initialized">
     <Window.Resources>
 
     </Window.Resources>
     <Grid>
-        <Button x:Name="btnSendMail" Content="Отправить письма"
-                HorizontalAlignment="Left" VerticalAlignment="Top"
-                Margin="240,193,0,0" Width="124" Click="btnSendMail_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="24"/>
+            <RowDefinition MinHeight="24" MaxHeight="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Foreground="Black" 
+               VerticalAlignment="Center" HorizontalAlignment="Left"
+               Content="Логин:"/>
+        <Label Grid.Row="1" Grid.Column="0" Foreground="Black" 
+               VerticalAlignment="Center" HorizontalAlignment="Left"
+               Content="Пароль:"/>
+        <Label Grid.Row="2" Grid.Column="0" Foreground="Black" 
+               VerticalAlignment="Center" HorizontalAlignment="Left"
+               Content="Тема письма:"/>
+        <Label Grid.Row="3" Grid.Column="0" Foreground="Black" 
+               VerticalAlignment="Top" HorizontalAlignment="Left"
+               Content="Текст письма:"/>
+
+        <TextBox x:Name="txtLogin"
+                   Grid.Row="0" Grid.Column="1"
+                   VerticalAlignment="Center"/>
         <PasswordBox x:Name="passwordBox"
-                     HorizontalAlignment="Left" VerticalAlignment="Top"
-                     Margin="240,170,0,0" Width="124"/>
+                     Grid.Row="1" Grid.Column="1"
+                     VerticalAlignment="Center"/>
+        <TextBox x:Name="txtSubject"
+                   Grid.Row="2" Grid.Column="1"
+                   VerticalAlignment="Center"/>
+        <TextBox x:Name="txtMailBody"
+                   Grid.Row="3" Grid.Column="1"/>
+
+        <Button x:Name="btnSendMail" Content="Отправить письмо"
+                Grid.Row="4" Grid.ColumnSpan="2"
+                HorizontalAlignment="Center" VerticalAlignment="Top"
+                Width="124" Click="btnSendMail_Click"/>
     </Grid>
 </Window>

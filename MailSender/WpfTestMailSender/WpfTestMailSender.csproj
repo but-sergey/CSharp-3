@@ -58,7 +58,7 @@
     <Compile Include="Dialogs\SendErrorWindow.xaml.cs">
       <DependentUpon>SendErrorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EmailSendService.cs" />
+    <Compile Include="Services\EmailSendService.cs" />
     <Compile Include="Dialogs\SendEndWindow.xaml.cs">
       <DependentUpon>SendEndWindow.xaml</DependentUpon>
     </Compile>

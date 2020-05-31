@@ -20,8 +20,9 @@ namespace WpfTestMailServer
 
             try
             {
+                Settings.SenderName = txtLogin.Text;
                 Settings.SenderPassword = passwordBox.Password;
-                email.SendEmail();
+                email.SendEmail(txtSubject.Text, txtMailBody.Text);
 
                 SendEndWindow sendEndWindow = new SendEndWindow();
                 sendEndWindow.ShowDialog();
@@ -31,6 +32,12 @@ namespace WpfTestMailServer
                 SendErrorWindow sendErrorWindow = new SendErrorWindow();
                 sendErrorWindow.ShowDialog();
             }
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            txtLogin.Text = Settings.SenderName;
+            passwordBox.Password = Settings.SenderPassword;
         }
     }
 }

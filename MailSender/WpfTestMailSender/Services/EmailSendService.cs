@@ -5,11 +5,11 @@ namespace WpfTestMailServer
 {
     internal sealed class EmailSendService
     {
-        public void SendEmail()
+        public void SendEmail(string MailSubject = "TestSubject", string MailBody = "TestBody")
         {
             MailMessage mailMessage = new MailMessage(Settings.FromMail, Settings.ToMail);
-            mailMessage.Subject = "Пробное письмо";
-            mailMessage.Body = "Содержимое пробного письма";
+            mailMessage.Subject = MailSubject;
+            mailMessage.Body = MailBody;
             mailMessage.IsBodyHtml = false;
 
             SmtpClient client = new SmtpClient(Settings.SmtpServer, Settings.SmtpPort);

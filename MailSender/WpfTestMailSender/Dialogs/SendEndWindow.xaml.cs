@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 
-
 namespace WpfTestMailServer
 {
     public partial class SendEndWindow : Window
