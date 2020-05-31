@@ -20,6 +20,7 @@ namespace WpfTestMailServer
 
             try
             {
+                Settings.SenderPassword = passwordBox.Password;
                 email.SendEmail();
 
                 SendEndWindow sendEndWindow = new SendEndWindow();

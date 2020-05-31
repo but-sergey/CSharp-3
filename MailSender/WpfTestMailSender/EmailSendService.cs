@@ -1,7 +1,5 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Mail;
-using WpfTestMailServer.StaticClasses;
 
 namespace WpfTestMailServer
 {
@@ -19,6 +17,8 @@ namespace WpfTestMailServer
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
             client.Credentials = new NetworkCredential(Settings.SenderName, Settings.SenderPassword);
+
+            client.Send(mailMessage);
         }
     }
 }

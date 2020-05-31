@@ -8,7 +8,7 @@
         Title="SendEndWindow" Height="175" Width="400"
         WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Label x:Name="lblSendEnd" Content="Работа завершена"
+        <Label x:Name="lblSendEnd" Content="Письмо отправлено"
                HorizontalAlignment="Center" VerticalAlignment="Top"
                Width="Auto" Height="Auto" FontSize="36">
             <Label.Foreground>
