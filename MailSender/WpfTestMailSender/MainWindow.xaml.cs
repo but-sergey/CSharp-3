@@ -29,7 +29,8 @@ namespace WpfTestMailServer
 
             try
             {
-                //client.Send(mailMessage);
+                client.Send(mailMessage);
+
                 SendEndWindow sendEndWindow = new SendEndWindow();
                 sendEndWindow.ShowDialog();
             }

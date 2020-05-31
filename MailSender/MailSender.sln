@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{15244BBA-D51B-4723-8216-736065488A2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTestMailServer", "WpfTestMailServer\WpfTestMailServer.csproj", "{ABA9D737-9B43-47FA-9EB3-A3D1BEA8E5CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTestMailSender", "WpfTestMailSender\WpfTestMailSender.csproj", "{ABA9D737-9B43-47FA-9EB3-A3D1BEA8E5CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
