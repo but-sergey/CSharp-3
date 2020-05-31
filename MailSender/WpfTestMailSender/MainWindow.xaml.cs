@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Mail;
 using System.Windows;
-
+using WpfTestMailServer.Dialogs;
 
 namespace WpfTestMailServer
 {
@@ -16,27 +16,19 @@ namespace WpfTestMailServer
 
         private void btnSendMail_Click(object sender, RoutedEventArgs e)
         {
-            MailMessage mailMessage = new MailMessage(Settings.FromMail, Settings.ToMail);
-            mailMessage.Subject = "Пробное письмо";
-            mailMessage.Body = "Содержимое пробного письма";
-            mailMessage.IsBodyHtml = false;
-
-            SmtpClient client = new SmtpClient(Settings.SmtpServer, Settings.SmtpPort);
-            client.EnableSsl = true;
-            client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.UseDefaultCredentials = false;
-            client.Credentials = new NetworkCredential(Settings.SenderName, passwordBox.Password);
+            EmailSendService email = new EmailSendService();
 
             try
             {
-                client.Send(mailMessage);
+                email.SendEmail();
 
                 SendEndWindow sendEndWindow = new SendEndWindow();
                 sendEndWindow.ShowDialog();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Невозможно отправить письмо ({ex.Message})", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                SendErrorWindow sendErrorWindow = new SendErrorWindow();
+                sendErrorWindow.ShowDialog();
             }
         }
     }
