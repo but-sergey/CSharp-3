@@ -17,7 +17,5 @@
         public static string SenderName = "test-3005@list.ru";
         //public static string SenderName = "but-sergey@bk.ru";
         //public static string SenderName = "asketemius";
-
-        public static string SenderPassword = "";
     }
 }
