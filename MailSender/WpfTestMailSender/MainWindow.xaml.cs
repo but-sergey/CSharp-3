@@ -18,10 +18,11 @@ namespace WpfTestMailServer
         {
             EmailSendService email = new EmailSendService();
 
+            Settings.SenderName = txtLogin.Text;
+            Settings.SenderPassword = passwordBox.Password;
+
             try
             {
-                Settings.SenderName = txtLogin.Text;
-                Settings.SenderPassword = passwordBox.Password;
                 email.SendEmail(txtSubject.Text, txtMailBody.Text);
 
                 SendEndWindow sendEndWindow = new SendEndWindow();

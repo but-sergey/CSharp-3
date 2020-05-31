@@ -7,18 +7,22 @@ namespace WpfTestMailServer
     {
         public void SendEmail(string MailSubject = "TestSubject", string MailBody = "TestBody")
         {
-            MailMessage mailMessage = new MailMessage(Settings.FromMail, Settings.ToMail);
-            mailMessage.Subject = MailSubject;
-            mailMessage.Body = MailBody;
-            mailMessage.IsBodyHtml = false;
+            using (MailMessage mailMessage = new MailMessage(Settings.FromMail, Settings.ToMail))
+            {
+                mailMessage.Subject = MailSubject;
+                mailMessage.Body = MailBody;
+                mailMessage.IsBodyHtml = false;
 
-            SmtpClient client = new SmtpClient(Settings.SmtpServer, Settings.SmtpPort);
-            client.EnableSsl = true;
-            client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.UseDefaultCredentials = false;
-            client.Credentials = new NetworkCredential(Settings.SenderName, Settings.SenderPassword);
+                using (SmtpClient client = new SmtpClient(Settings.SmtpServer, Settings.SmtpPort))
+                {
+                    client.EnableSsl = true;
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    client.UseDefaultCredentials = false;
+                    client.Credentials = new NetworkCredential(Settings.SenderName, Settings.SenderPassword);
 
-            client.Send(mailMessage);
+                    client.Send(mailMessage);
+                }
+            }
         }
     }
 }
