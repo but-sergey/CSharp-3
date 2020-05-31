@@ -29,8 +29,9 @@ namespace WpfTestMailServer
 
             try
             {
-                client.Send(mailMessage);
-                MessageBox.Show($"Письмо отправлено", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                //client.Send(mailMessage);
+                SendEndWindow sendEndWindow = new SendEndWindow();
+                sendEndWindow.ShowDialog();
             }
             catch (Exception ex)
             {
