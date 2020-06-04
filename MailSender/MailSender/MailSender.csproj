@@ -55,7 +55,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Scheduler.cs" />
+    <Compile Include="Dialogs\SendEndWindow.xaml.cs">
+      <DependentUpon>SendEndWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\SendErrorWindow.xaml.cs">
+      <DependentUpon>SendErrorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Scheduler.cs" />
+    <Compile Include="Services\EmailSendService.cs" />
+    <Compile Include="StaticClasses\Settings.cs" />
+    <Page Include="Dialogs\SendEndWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\SendErrorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -65,8 +81,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppConfig.cs" />
-    <Compile Include="DB.cs" />
-    <Compile Include="EmailSendService.cs" />
+    <Compile Include="Services\DB.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
