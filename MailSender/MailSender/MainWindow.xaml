@@ -14,7 +14,18 @@
             </MenuItem>
         </Menu>
         <TabControl DockPanel.Dock="Top">
-            <TabItem Header="Группы рассылки"></TabItem>
+            <TabItem Header="Группы рассылки">
+                <ToolBarTray Height="65" Width="Auto" VerticalAlignment="Top">
+                    <ToolBar Name="tbSender" Width="500" Height="30">
+                        <Label Name="lSender" Content="Выбрать отправителя:" Width="130" Height="25"/>
+                        <ComboBox Name="cbSenderSelect" Width="270" Height="25"
+                                  SelectedIndex="0" ToolTip="Выбрать e-mail отправителя">
+                            <ComboBoxItem Content="but-sergey@bk.ru"/>
+                            <ComboBoxItem Content="asketemius@yandex.ru"/>
+                        </ComboBox>
+                    </ToolBar>
+                </ToolBarTray>
+            </TabItem>
             <TabItem Header="Планировщик"></TabItem>
             <TabItem Header="Редактор писем"></TabItem>
             <TabItem Header="Статистика"></TabItem>
