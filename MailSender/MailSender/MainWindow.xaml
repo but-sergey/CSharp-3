@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MailSender"
+        xmlns:fa="http://schemas.fontawesome.com/icons/"
         mc:Ignorable="d"
-        Title="Mail Sender" Height="350" Width="525">
+        Title="Mail Sender" Height="600" Width="800">
     <DockPanel>
         <Menu Height="25" DockPanel.Dock="Top"
               HorizontalAlignment="Stretch" VerticalAlignment="Top">
@@ -13,21 +14,118 @@
                 <MenuItem Name="miClose" Header="Закрыть" Click="miClose_Click"></MenuItem>
             </MenuItem>
         </Menu>
-        <TabControl DockPanel.Dock="Top">
+        <TabControl x:Name="tabControl" DockPanel.Dock="Top">
             <TabItem Header="Группы рассылки">
-                <ToolBarTray Height="65" Width="Auto" VerticalAlignment="Top">
-                    <ToolBar Name="tbSender" Width="500" Height="30">
-                        <Label Name="lSender" Content="Выбрать отправителя:" Width="130" Height="25"/>
-                        <ComboBox Name="cbSenderSelect" Width="270" Height="25"
-                                  SelectedIndex="0" ToolTip="Выбрать e-mail отправителя">
-                            <ComboBoxItem Content="but-sergey@bk.ru"/>
-                            <ComboBoxItem Content="asketemius@yandex.ru"/>
-                        </ComboBox>
-                    </ToolBar>
-                </ToolBarTray>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="65"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <ToolBarTray Height="65" Width="Auto" VerticalAlignment="Top" Grid.ColumnSpan="2">
+                        <ToolBar x:Name="tbSender" Width="Auto" Height="30">
+                            <Label x:Name="lSender" Content="Выбрать отправителя:" Width="130" Height="25"/>
+                            <ComboBox x:Name="cbSenderSelect" Width="210" Height="25"
+                                      SelectedIndex="0" ToolTip="Выбрать e-mail отправителя">
+                                <ComboBoxItem Content="but-sergey@bk.ru"/>
+                                <ComboBoxItem Content="asketemius@yandex.ru"/>
+                            </ComboBox>
+                            <Button x:Name="btnEditSender" Width="25" Height="25" 
+                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                    ToolTip="Редактировать">
+                                <fa:SvgAwesome Height="25" Icon="Regular_Edit"/>
+                            </Button>
+                            <Button x:Name="btnAddSender" Width="25" Height="25" 
+                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                    ToolTip="Добавить">
+                                <fa:SvgAwesome Height="25" Icon="Solid_Plus"/>
+                            </Button>
+                            <Button x:Name="btnDeleteSender" Width="25" Height="25"
+                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                    ToolTip="Удалить">
+                                <fa:SvgAwesome Height="25" Icon="Solid_Minus"/>
+                            </Button>
+                        </ToolBar>
+                        <ToolBar x:Name="tbSmtp" Height="30" Width="Auto" Band="1" BandIndex="0"
+                                  HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <Label x:Name="lSmtp" Content="Выбрать smtp-сервер: " Height="25" Width="Auto"/>
+                            <ComboBox x:Name="cbSmtpSelect" Height="25" Width="210" Margin="0"
+                                      VerticalAlignment="Top" SelectedIndex="0" ToolTip="Выбрать smtp-сервер">
+                            </ComboBox>
+                            <Button x:Name="btnEditSmtp" Width="25" Height="25" 
+                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                    ToolTip="Редактировать">
+                                <fa:SvgAwesome Height="25" Icon="Regular_Edit"/>
+                            </Button>
+                            <Button x:Name="btnAddSmtp" Width="25" Height="25" 
+                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                    ToolTip="Добавить">
+                                <fa:SvgAwesome Height="25" Icon="Solid_Plus"/>
+                            </Button>
+                            <Button x:Name="btnDeleteSmtp" Width="25" Height="25"
+                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                    ToolTip="Удалить">
+                                <fa:SvgAwesome Height="25" Icon="Solid_Minus"/>
+                            </Button>
+                        </ToolBar>
+                        <ToolBar x:Name="tbPlanner" Height="30" Width="230" Band="0" BandIndex="1"
+                                 HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <Label x:Name="lPlanner" Content="Перейти в планировщик: " Height="25" Width="Auto"/>
+                            <Button x:Name="btnClock" Width="25" Height="25" ToolTip="Перейти в планировщик"
+                                    Click="btnClock_Click">
+                                <fa:SvgAwesome Height="25" Icon="Solid_Clock"/>
+                            </Button>
+                        </ToolBar>
+                        <ToolBar x:Name="tbAddress" Height="30" Width="230" Band="1" BandIndex="1"
+                                 HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <Label x:Name="lAddress" Content="Список адресатов:" Height="25" Width="Auto"/>
+                            <Button x:Name="btnEditAddress" Width="25" Height="25" 
+                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                    ToolTip="Редактировать">
+                                <fa:SvgAwesome Height="25" Icon="Regular_Edit"/>
+                            </Button>
+                            <Button x:Name="btnAddAddress" Width="25" Height="25" 
+                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                    ToolTip="Добавить">
+                                <fa:SvgAwesome Height="25" Icon="Solid_Plus"/>
+                            </Button>
+                            <Button x:Name="btnDeleteAddress" Width="25" Height="25"
+                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                    ToolTip="Удалить">
+                                <fa:SvgAwesome Height="25" Icon="Solid_Minus"/>
+                            </Button>
+                        </ToolBar>
+                    </ToolBarTray>
+                    <DataGrid Grid.Row="1" Width="Auto" Height="Auto" Margin="0,0,0,65"
+                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="2"/>
+                </Grid>
             </TabItem>
-            <TabItem Header="Планировщик"></TabItem>
-            <TabItem Header="Редактор писем"></TabItem>
+            <TabItem x:Name="tabPlanner" Header="Планировщик">
+                <StackPanel Orientation="Vertical">
+                    <Calendar x:Name="cldSchedulDateTimes" SelectionMode="MultipleRange" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="tbTimePicker" Width="179" HorizontalAlignment="Left"/>
+                    <Button x:Name="btnSend" Width="179" Height="25" Margin="0,3,0,0"
+                            HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnSend_Click">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <fa:SvgAwesome Height="20" Icon="Solid_Clock" VerticalAlignment="Center"/>
+                                <TextBlock Text="Отправить запланированно" VerticalAlignment="Center" Margin="3,0"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="btnSendAtOnce" Width="179" Height="25" Margin="0,3,0,0"
+                            HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnSend_Click">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <fa:SvgAwesome Height="20" Icon="Solid_MailBulk" VerticalAlignment="Center"/>
+                                <TextBlock Text="Отправить сразу" VerticalAlignment="Center" Margin="3,0"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </TabItem>
+            <TabItem x:Name="tabEditor" Header="Редактор писем">
+                <RichTextBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            </TabItem>
             <TabItem Header="Статистика"></TabItem>
         </TabControl>
     </DockPanel>

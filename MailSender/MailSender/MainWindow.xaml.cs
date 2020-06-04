@@ -13,5 +13,15 @@ namespace MailSender
         {
             this.Close();
         }
+
+        private void btnClock_Click(object sender, RoutedEventArgs e)
+        {
+            tabControl.SelectedItem = tabPlanner;
+        }
+
+        private void btnSend_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
