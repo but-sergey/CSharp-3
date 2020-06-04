@@ -8,7 +8,16 @@
         Title="Mail Sender" Height="350" Width="525">
     <DockPanel>
         <Menu Height="25" DockPanel.Dock="Top"
-              HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
-        <TabControl DockPanel.Dock="Top"/>
+              HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Name="miClose" Header="Закрыть" Click="miClose_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <TabControl DockPanel.Dock="Top">
+            <TabItem Header="Группы рассылки"></TabItem>
+            <TabItem Header="Планировщик"></TabItem>
+            <TabItem Header="Редактор писем"></TabItem>
+            <TabItem Header="Статистика"></TabItem>
+        </TabControl>
     </DockPanel>
 </Window>
