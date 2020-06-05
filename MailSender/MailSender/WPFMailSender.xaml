@@ -102,7 +102,7 @@
                     <Calendar x:Name="cldSchedulDateTimes" SelectionMode="MultipleRange" HorizontalAlignment="Left"/>
                     <TextBox x:Name="tbTimePicker" Width="179" HorizontalAlignment="Left"/>
                     <Button x:Name="btnSend" Width="179" Height="25" Margin="0,3,0,0"
-                            HorizontalAlignment="Left" VerticalAlignment="Top">
+                            HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnSend_Click">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <fa:SvgAwesome Height="20" Icon="Solid_Clock" VerticalAlignment="Center"/>
