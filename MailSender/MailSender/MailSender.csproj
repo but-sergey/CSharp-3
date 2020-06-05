@@ -61,24 +61,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Dialogs\SendEndWindow.xaml.cs">
-      <DependentUpon>SendEndWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dialogs\SendErrorWindow.xaml.cs">
-      <DependentUpon>SendErrorWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Services\Scheduler.cs" />
     <Compile Include="Services\EmailSendService.cs" />
+    <Compile Include="StaticClasses\Password.cs" />
     <Compile Include="StaticClasses\Settings.cs" />
-    <Page Include="Dialogs\SendEndWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Dialogs\SendErrorWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MainWindow.xaml">
+    <Compile Include="StaticClasses\Variables.cs" />
+    <Page Include="WPFMailSender.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -88,8 +76,8 @@
     </Compile>
     <Compile Include="AppConfig.cs" />
     <Compile Include="Services\DB.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="WPFMailSender.xaml.cs">
+      <DependentUpon>WPFMailSender.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -119,6 +107,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dialogs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

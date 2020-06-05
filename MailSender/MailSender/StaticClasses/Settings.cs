@@ -1,4 +1,4 @@
-﻿namespace MailSender
+﻿namespace MailSender.StaticClasses
 {
     static class Settings
     {

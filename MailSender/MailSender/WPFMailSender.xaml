@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MailSender"
         xmlns:fa="http://schemas.fontawesome.com/icons/"
         mc:Ignorable="d"
-        Title="Mail Sender" Height="600" Width="800">
+        Title="Рассыльщик" Height="600" Width="800">
     <DockPanel>
         <Menu Height="25" DockPanel.Dock="Top"
               HorizontalAlignment="Stretch" VerticalAlignment="Top">
@@ -26,8 +26,6 @@
                             <Label x:Name="lSender" Content="Выбрать отправителя:" Width="130" Height="25"/>
                             <ComboBox x:Name="cbSenderSelect" Width="210" Height="25"
                                       SelectedIndex="0" ToolTip="Выбрать e-mail отправителя">
-                                <ComboBoxItem Content="but-sergey@bk.ru"/>
-                                <ComboBoxItem Content="asketemius@yandex.ru"/>
                             </ComboBox>
                             <Button x:Name="btnEditSender" Width="25" Height="25" 
                                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"

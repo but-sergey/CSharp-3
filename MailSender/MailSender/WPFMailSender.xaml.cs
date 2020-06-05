@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using MailSender.StaticClasses;
+using System.Windows;
 
 namespace MailSender
 {
@@ -7,6 +8,9 @@ namespace MailSender
         public MainWindow()
         {
             InitializeComponent();
+            cbSenderSelect.ItemsSource = Variables.Senders;
+            cbSenderSelect.DisplayMemberPath = "Key";
+            cbSenderSelect.SelectedValuePath = "Value";
         }
 
         private void miClose_Click(object sender, RoutedEventArgs e)
