@@ -93,7 +93,7 @@
                             </Button>
                         </ToolBar>
                     </ToolBarTray>
-                    <DataGrid Grid.Row="1" Width="Auto" Height="Auto" Margin="0,0,0,65"
+                    <DataGrid Grid.Row="1" Width="Auto" Height="Auto" Margin="0,0,0,0"
                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
@@ -106,7 +106,7 @@
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <fa:SvgAwesome Height="20" Icon="Solid_Clock" VerticalAlignment="Center"/>
-                                <TextBlock Text="Отправить запланированно" VerticalAlignment="Center" Margin="3,0"/>
+                                <TextBlock Text="Отправить по плану" VerticalAlignment="Center" Margin="5,0"/>
                             </StackPanel>
                         </Button.Content>
                     </Button>
@@ -115,7 +115,7 @@
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <fa:SvgAwesome Height="20" Icon="Solid_MailBulk" VerticalAlignment="Center"/>
-                                <TextBlock Text="Отправить сразу" VerticalAlignment="Center" Margin="3,0"/>
+                                <TextBlock Text="Отправить сразу" VerticalAlignment="Center" Margin="5,0"/>
                             </StackPanel>
                         </Button.Content>
                     </Button>

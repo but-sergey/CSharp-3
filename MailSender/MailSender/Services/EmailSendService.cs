@@ -2,7 +2,7 @@
 using System.Net.Mail;
 using MailSender.StaticClasses;
 
-namespace MailSender
+namespace MailSender.Services
 {
     internal sealed class EmailSendService
     {
