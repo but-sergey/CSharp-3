@@ -74,7 +74,6 @@
     <Compile Include="Services\Scheduler.cs" />
     <Compile Include="Services\EmailSendService.cs" />
     <Compile Include="StaticClasses\Password.cs" />
-    <Compile Include="StaticClasses\Settings.cs" />
     <Compile Include="StaticClasses\Variables.cs" />
     <Page Include="WPFMailSender.xaml">
       <Generator>MSBuild:Compile</Generator>
