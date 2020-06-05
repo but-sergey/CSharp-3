@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CodePasswordDLL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cf00452f3f950693, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\CodePasswordDLL\v4.0_1.0.0.0__cf00452f3f950693\CodePasswordDLL.dll</HintPath>
+    </Reference>
     <Reference Include="FontAwesome5, Version=2.0.6.0, Culture=neutral, PublicKeyToken=9cfaf01297a008f8, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome5.2.0.6\lib\net472\FontAwesome5.dll</HintPath>
     </Reference>

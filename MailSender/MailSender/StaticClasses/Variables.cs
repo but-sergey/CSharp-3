@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CodePasswordDLL;
+using System.Collections.Generic;
 
 namespace MailSender.StaticClasses
 {
@@ -11,7 +12,7 @@ namespace MailSender.StaticClasses
 
         private static Dictionary<string, string> dicSenders = new Dictionary<string, string>()
         {
-            {"test-3005@list.ru", "" },
+            {"test-3005@list.ru", CodePassword.getPassword("uftuqbtt114") },
             {"but-sergey@bk.ru", "" }
         };
     }
