@@ -11,8 +11,8 @@ namespace MailSender.StaticClasses
 
         private static Dictionary<string, string> dicSenders = new Dictionary<string, string>()
         {
-            {"but-sergey@bk.ru", "" },
-            {"asketemius@yandex.ru", "" }
+            {"test-3005@list.ru", "" },
+            {"but-sergey@bk.ru", "" }
         };
     }
 }
