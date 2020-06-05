@@ -1,4 +1,6 @@
-﻿using MailSender.StaticClasses;
+﻿using MailSender.Services;
+using MailSender.StaticClasses;
+using System.Linq;
 using System.Windows;
 
 namespace MailSender
@@ -8,9 +10,13 @@ namespace MailSender
         public MainWindow()
         {
             InitializeComponent();
+            
             cbSenderSelect.ItemsSource = Variables.Senders;
             cbSenderSelect.DisplayMemberPath = "Key";
             cbSenderSelect.SelectedValuePath = "Value";
+
+            DB db = new DB();
+            dgEmails.ItemsSource = db.Emails;
         }
 
         private void miClose_Click(object sender, RoutedEventArgs e)
@@ -23,9 +29,23 @@ namespace MailSender
             tabControl.SelectedItem = tabPlanner;
         }
 
-        private void btnSend_Click(object sender, RoutedEventArgs e)
+        private void btnSendAtOnce_Click(object sender, RoutedEventArgs e)
         {
+            string strLogin = cbSenderSelect.Text;
+            string strPassword = cbSenderSelect.SelectedValue.ToString();
+            if(string.IsNullOrEmpty(strLogin))
+            {
+                MessageBox.Show("Выберите отправителя");
+                return;
+            }
+            if (string.IsNullOrEmpty(strPassword))
+            {
+                MessageBox.Show("Укажите пароль отправителя");
+                return;
+            }
 
+            EmailSendService emailSender = new EmailSendService(strLogin, strPassword);
+            emailSender.SendMails((IQueryable<Email>)dgEmails.ItemsSource);
         }
     }
 }

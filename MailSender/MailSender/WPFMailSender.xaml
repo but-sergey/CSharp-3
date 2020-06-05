@@ -93,7 +93,7 @@
                             </Button>
                         </ToolBar>
                     </ToolBarTray>
-                    <DataGrid Grid.Row="1" Width="Auto" Height="Auto" Margin="0,0,0,0"
+                    <DataGrid x:Name="dgEmails" Grid.Row="1" Width="Auto" Height="Auto" Margin="0,0,0,0"
                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
@@ -102,7 +102,7 @@
                     <Calendar x:Name="cldSchedulDateTimes" SelectionMode="MultipleRange" HorizontalAlignment="Left"/>
                     <TextBox x:Name="tbTimePicker" Width="179" HorizontalAlignment="Left"/>
                     <Button x:Name="btnSend" Width="179" Height="25" Margin="0,3,0,0"
-                            HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnSend_Click">
+                            HorizontalAlignment="Left" VerticalAlignment="Top">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <fa:SvgAwesome Height="20" Icon="Solid_Clock" VerticalAlignment="Center"/>
@@ -111,7 +111,7 @@
                         </Button.Content>
                     </Button>
                     <Button x:Name="btnSendAtOnce" Width="179" Height="25" Margin="0,3,0,0"
-                            HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnSend_Click">
+                            HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnSendAtOnce_Click">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <fa:SvgAwesome Height="20" Icon="Solid_MailBulk" VerticalAlignment="Center"/>

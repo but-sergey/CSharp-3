@@ -1,28 +1,59 @@
-﻿using System.Net;
+﻿using System;
+using System.Linq;
+using System.Net;
 using System.Net.Mail;
-using MailSender.StaticClasses;
+using System.Windows;
 
 namespace MailSender.Services
 {
     internal sealed class EmailSendService
     {
-        public void SendEmail(string MailSubject = "TestSubject", string MailBody = "TestBody")
+        private string strLogin;
+        private string strPassword;
+        private string strSmtp = "smtp.mail.ru";
+        private int iSmtpPort = 25;
+        private string strBody;
+        private string strSubject;
+
+        public EmailSendService(string sLogin, string sPassword)
         {
-            using (MailMessage mailMessage = new MailMessage(Settings.FromMail, Settings.ToMail))
+            strLogin = sLogin;
+            strPassword = sPassword;
+        }
+
+        private void SendEmail(string mail, string name)
+        {
+            using (MailMessage mailMessage = new MailMessage(strLogin, mail))
             {
-                mailMessage.Subject = MailSubject;
-                mailMessage.Body = MailBody;
+                mailMessage.Subject = strSubject;
+                mailMessage.Body = "Hello World!";
                 mailMessage.IsBodyHtml = false;
 
-                using (SmtpClient client = new SmtpClient(Settings.SmtpServer, Settings.SmtpPort))
+                using (SmtpClient client = new SmtpClient(strSmtp, iSmtpPort))
                 {
                     client.EnableSsl = true;
                     client.DeliveryMethod = SmtpDeliveryMethod.Network;
                     client.UseDefaultCredentials = false;
-                    client.Credentials = new NetworkCredential(Settings.SenderName, Settings.SenderPassword);
+                    client.Credentials = new NetworkCredential(strLogin, strPassword);
 
-                    client.Send(mailMessage);
+                    try
+                    {
+                        client.Send(mailMessage);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Невозможно отправить письмо " + ex.ToString(), "Ошибка отправки!",
+                                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
+            }
+        }
+
+        public void SendMails(IQueryable<Email> emails)
+        {
+            foreach (Email email in emails)
+            {
+                SendEmail(email.Value, email.Name);
             }
         }
     }

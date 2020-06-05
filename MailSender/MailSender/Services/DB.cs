@@ -1,6 +1,17 @@
-﻿namespace MailSender.Services
+﻿using System.Linq;
+
+namespace MailSender.Services
 {
-    class DB
+    public sealed class DB
     {
+        private EmailsDataContext emails = new EmailsDataContext();
+        
+        public IQueryable<Email> Emails
+        {
+            get
+            {
+                return from c in emails.Emails select c;
+            }
+        }
     }
 }
