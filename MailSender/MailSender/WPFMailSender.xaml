@@ -46,8 +46,8 @@
                         <ToolBar x:Name="tbSmtp" Height="30" Width="Auto" Band="1" BandIndex="0"
                                   HorizontalAlignment="Left" VerticalAlignment="Top">
                             <Label x:Name="lSmtp" Content="Выбрать smtp-сервер: " Height="25" Width="Auto"/>
-                            <ComboBox x:Name="cbSmtpSelect" Height="25" Width="210" Margin="0"
-                                      VerticalAlignment="Top" SelectedIndex="0" ToolTip="Выбрать smtp-сервер"/>
+                            <ComboBox x:Name="cbSmtpSelect" Width="210" Height="25"
+                                      SelectedIndex="0" ToolTip="Выбрать smtp-сервер"/>
                             <Button x:Name="btnEditSmtp" Width="25" Height="25" 
                                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                                     ToolTip="Редактировать">
@@ -66,11 +66,6 @@
                         </ToolBar>
                         <ToolBar x:Name="tbPlanner" Height="30" Width="Auto" Band="0" BandIndex="1"
                                  HorizontalAlignment="Left" VerticalAlignment="Top">
-                            <!--<Label x:Name="lPlanner" Content="Перейти в планировщик: " Height="25" Width="Auto"/>
-                            <Button x:Name="btnClock" Width="25" Height="25" ToolTip="Перейти в планировщик"
-                                    Click="btnClock_Click">
-                                <fa:SvgAwesome Height="25" Icon="Solid_Clock"/>
-                            </Button>-->
                             <TabSwitcher:TabSwitcherControl x:Name="tscTabSwitcher" IsHideBtnPrevious="True"
                                                             btnNextClick="tscTabSwitcher_btnNextClick"/>
 

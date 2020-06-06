@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Reflection.Emit;
 using System.Windows;
 
 namespace MailSender.Services
@@ -10,15 +11,17 @@ namespace MailSender.Services
     {
         private string strLogin;
         private string strPassword;
-        private string strSmtp = "smtp.mail.ru";
-        private int iSmtpPort = 25;
+        private string strSmtp;
+        private int iSmtpPort;
         private string strBody;
         private string strSubject;
 
-        public EmailSendService(string sLogin, string sPassword)
+        public EmailSendService(string sLogin, string sPassword, string sSmtp, int iPort)
         {
             strLogin = sLogin;
             strPassword = sPassword;
+            strSmtp = sSmtp;
+            iSmtpPort = iPort;
         }
 
         private void SendEmail(string mail, string name)

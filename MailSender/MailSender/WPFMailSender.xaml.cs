@@ -17,6 +17,11 @@ namespace MailSender
             cbSenderSelect.SelectedValuePath = "Value";
             cbSenderSelect.SelectedIndex = 0;
 
+            cbSmtpSelect.ItemsSource = Variables.SmptServers;
+            cbSmtpSelect.DisplayMemberPath = "Key";
+            cbSmtpSelect.SelectedValuePath = "Value";
+            cbSmtpSelect.SelectedIndex = 0;
+
             DB db = new DB();
             dgEmails.ItemsSource = db.Emails;
         }
@@ -35,6 +40,9 @@ namespace MailSender
         {
             string strLogin = cbSenderSelect.Text;
             string strPassword = cbSenderSelect.SelectedValue.ToString();
+            string strSmtp = cbSmtpSelect.Text;
+            int iPort = (int) cbSmtpSelect.SelectedValue;
+
             if (string.IsNullOrEmpty(strLogin))
             {
                 MessageBox.Show("Выберите отправителя");
@@ -46,13 +54,18 @@ namespace MailSender
                 return;
             }
 
-            EmailSendService emailSender = new EmailSendService(strLogin, strPassword);
+            EmailSendService emailSender = new EmailSendService(strLogin, strPassword, strSmtp, iPort);
             emailSender.SendMails((IQueryable<Email>)dgEmails.ItemsSource);
             MessageBox.Show("Письма отправлены", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
+            string strLogin = cbSenderSelect.Text;
+            string strPassword = cbSenderSelect.SelectedValue.ToString();
+            string strSmtp = cbSmtpSelect.Text;
+            int iPort = (int)cbSmtpSelect.SelectedValue;
+
             Scheduler scheduler = new Scheduler();
             TimeSpan tsSendTime = scheduler.GetSendTime(tbTimePicker.Text);
             if(tsSendTime == new TimeSpan())
@@ -66,8 +79,7 @@ namespace MailSender
                 MessageBox.Show("Дата и время отправки писем не могут быть раньше, чем настоящее время");
                 return;
             }
-            EmailSendService emailSender = new EmailSendService(cbSenderSelect.Text, 
-                                                        cbSenderSelect.SelectedValue.ToString());
+            EmailSendService emailSender = new EmailSendService(strLogin, strPassword, strSmtp, iPort);
             scheduler.SendEmails(dtSendDateTime, emailSender, (IQueryable<Email>)dgEmails.ItemsSource);
         }
 
