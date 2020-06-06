@@ -3,6 +3,7 @@ using MailSender.StaticClasses;
 using System;
 using System.Linq;
 using System.Windows;
+using System.Windows.Documents;
 
 namespace MailSender
 {
@@ -36,35 +37,61 @@ namespace MailSender
             tabControl.SelectedItem = tabPlanner;
         }
 
-        private void btnSendAtOnce_Click(object sender, RoutedEventArgs e)
+        private EmailSettings? GetSettings()
         {
-            string strLogin = cbSenderSelect.Text;
-            string strPassword = cbSenderSelect.SelectedValue.ToString();
-            string strSmtp = cbSmtpSelect.Text;
-            int iPort = (int) cbSmtpSelect.SelectedValue;
+            EmailSettings emailSettings;
+            emailSettings.strLogin = cbSenderSelect.Text;
+            emailSettings.strPassword = cbSenderSelect.SelectedValue.ToString();
+            emailSettings.strSmtp = cbSmtpSelect.Text;
+            emailSettings.iSmtpPort = (int)cbSmtpSelect.SelectedValue;
 
-            if (string.IsNullOrEmpty(strLogin))
+            TextRange textRange = new TextRange(rchBody.Document.ContentStart, rchBody.Document.ContentEnd);
+            emailSettings.strBody = textRange.Text;
+            emailSettings.strSubject = txtSubject.Text;
+
+            if (string.IsNullOrEmpty(emailSettings.strLogin))
             {
                 MessageBox.Show("Выберите отправителя");
-                return;
+                tabControl.SelectedIndex = 0;
+                return null;
             }
-            if (string.IsNullOrEmpty(strPassword))
+            if (string.IsNullOrEmpty(emailSettings.strPassword))
             {
-                MessageBox.Show("Укажите пароль отправителя");
-                return;
+                MessageBox.Show("Укажите пароль отправителя [Функция ещё не подключена]");
+                return null;
+            }
+            if (string.IsNullOrEmpty(emailSettings.strSubject))
+            {
+                MessageBox.Show("Заполните тему письма");
+                tabControl.SelectedIndex = 2;
+                return null;
+            }
+            if (string.IsNullOrEmpty(emailSettings.strBody))
+            {
+                MessageBox.Show("Заполните тело письма");
+                tabControl.SelectedIndex = 3;
+                return null;
             }
 
-            EmailSendService emailSender = new EmailSendService(strLogin, strPassword, strSmtp, iPort);
+            return emailSettings;
+        }
+
+        private void btnSendAtOnce_Click(object sender, RoutedEventArgs e)
+        {
+            EmailSettings? emailSettings = GetSettings();
+
+            if (emailSettings == null) return;
+
+            EmailSendService emailSender = new EmailSendService(emailSettings);
             emailSender.SendMails((IQueryable<Email>)dgEmails.ItemsSource);
             MessageBox.Show("Письма отправлены", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
-            string strLogin = cbSenderSelect.Text;
-            string strPassword = cbSenderSelect.SelectedValue.ToString();
-            string strSmtp = cbSmtpSelect.Text;
-            int iPort = (int)cbSmtpSelect.SelectedValue;
+            EmailSettings? emailSettings = GetSettings();
+
+            if (emailSettings == null) return;
 
             Scheduler scheduler = new Scheduler();
             TimeSpan tsSendTime = scheduler.GetSendTime(tbTimePicker.Text);
@@ -79,7 +106,8 @@ namespace MailSender
                 MessageBox.Show("Дата и время отправки писем не могут быть раньше, чем настоящее время");
                 return;
             }
-            EmailSendService emailSender = new EmailSendService(strLogin, strPassword, strSmtp, iPort);
+
+            EmailSendService emailSender = new EmailSendService(emailSettings);
             scheduler.SendEmails(dtSendDateTime, emailSender, (IQueryable<Email>)dgEmails.ItemsSource);
         }
 

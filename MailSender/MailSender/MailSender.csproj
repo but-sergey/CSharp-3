@@ -88,6 +88,7 @@
     </Compile>
     <Compile Include="Services\Scheduler.cs" />
     <Compile Include="Services\EmailSendService.cs" />
+    <Compile Include="StaticClasses\EmailSettings.cs" />
     <Compile Include="StaticClasses\Password.cs" />
     <Compile Include="StaticClasses\Variables.cs" />
     <Page Include="WPFMailSender.xaml">

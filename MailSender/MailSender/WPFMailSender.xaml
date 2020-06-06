@@ -115,7 +115,13 @@
                 </StackPanel>
             </TabItem>
             <TabItem x:Name="tabEditor" Header="Редактор писем">
-                <RichTextBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                <DockPanel>
+                    <DockPanel DockPanel.Dock="Top">
+                        <TextBlock Text="Тема письма:" DockPanel.Dock="Left"/>
+                        <TextBox x:Name="txtSubject" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                    <RichTextBox x:Name="rchBody" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                </DockPanel>
             </TabItem>
             <TabItem Header="Статистика"/>
         </TabControl>

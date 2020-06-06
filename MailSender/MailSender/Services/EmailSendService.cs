@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Reflection.Emit;
 using System.Windows;
+using MailSender.StaticClasses;
 
 namespace MailSender.Services
 {
@@ -13,15 +13,17 @@ namespace MailSender.Services
         private string strPassword;
         private string strSmtp;
         private int iSmtpPort;
-        private string strBody;
         private string strSubject;
+        private string strBody;
 
-        public EmailSendService(string sLogin, string sPassword, string sSmtp, int iPort)
+        public EmailSendService(EmailSettings? emailSettings)
         {
-            strLogin = sLogin;
-            strPassword = sPassword;
-            strSmtp = sSmtp;
-            iSmtpPort = iPort;
+            strLogin = emailSettings?.strLogin;
+            strPassword = emailSettings?.strPassword;
+            strSmtp = emailSettings?.strSmtp;
+            iSmtpPort = emailSettings?.iSmtpPort??0;
+            strSubject = emailSettings?.strSubject;
+            strBody = emailSettings?.strBody;
         }
 
         private void SendEmail(string mail, string name)
@@ -29,7 +31,7 @@ namespace MailSender.Services
             using (MailMessage mailMessage = new MailMessage(strLogin, mail))
             {
                 mailMessage.Subject = strSubject;
-                mailMessage.Body = "Hello World!";
+                mailMessage.Body = strBody;
                 mailMessage.IsBodyHtml = false;
 
                 using (SmtpClient client = new SmtpClient(strSmtp, iSmtpPort))
