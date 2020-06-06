@@ -36,7 +36,7 @@ namespace MailSender
     #endregion
 		
 		public EmailsDataContext() : 
-				base(global::MailSender.Properties.Settings.Default.MailsAndSendersConnectionString, mappingSource)
+				base(global::MailSender.Properties.Settings.Default.MailsAndSendersConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
