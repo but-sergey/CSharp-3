@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="TabSwitcher.TabSwitcherControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TabSwitcher"
+             xmlns:fa="http://schemas.fontawesome.com/icons/"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="229">
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Button x:Name="btnPrevious" Width="114" Click="btnPrevious_Click">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <fa:SvgAwesome Height="20" VerticalAlignment="Center" Icon="Solid_ArrowLeft"/>
+                    <TextBlock Text="Предыдущий" VerticalAlignment="Center" Margin="3,0,0,0"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Button x:Name="btnNext" Width="115" Click="btnNext_Click">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Следующий" VerticalAlignment="Center" Margin="0,0,3,0"/>
+                    <fa:SvgAwesome Height="20" VerticalAlignment="Center" Icon="Solid_ArrowRight"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+    </StackPanel>
+</UserControl>

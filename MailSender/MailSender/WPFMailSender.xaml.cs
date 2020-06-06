@@ -15,6 +15,7 @@ namespace MailSender
             cbSenderSelect.ItemsSource = Variables.Senders;
             cbSenderSelect.DisplayMemberPath = "Key";
             cbSenderSelect.SelectedValuePath = "Value";
+            cbSenderSelect.SelectedIndex = 0;
 
             DB db = new DB();
             dgEmails.ItemsSource = db.Emails;
@@ -34,7 +35,7 @@ namespace MailSender
         {
             string strLogin = cbSenderSelect.Text;
             string strPassword = cbSenderSelect.SelectedValue.ToString();
-            if(string.IsNullOrEmpty(strLogin))
+            if (string.IsNullOrEmpty(strLogin))
             {
                 MessageBox.Show("Выберите отправителя");
                 return;
@@ -68,6 +69,11 @@ namespace MailSender
             EmailSendService emailSender = new EmailSendService(cbSenderSelect.Text, 
                                                         cbSenderSelect.SelectedValue.ToString());
             scheduler.SendEmails(dtSendDateTime, emailSender, (IQueryable<Email>)dgEmails.ItemsSource);
+        }
+
+        private void tscTabSwitcher_btnNextClick(object sender, RoutedEventArgs e)
+        {
+            tabControl.SelectedIndex = 1;
         }
     }
 }
