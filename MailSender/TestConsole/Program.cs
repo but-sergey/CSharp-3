@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CodePasswordDLL;
+using System;
 using System.Net;
 using System.Net.Mail;
 
@@ -6,7 +7,7 @@ namespace TestConsole
 {
     class Program
     {
-        static void Main(string[] args)
+        static void SendMail()
         {
             MailMessage mailMessage = new MailMessage(Settings.FromMail, Settings.ToMail);
             mailMessage.Subject = "Пробное письмо";
@@ -34,6 +35,14 @@ namespace TestConsole
             {
                 Console.WriteLine($"Невозможно отправить письмо ({ex.Message})");
             }
+
+        }
+
+        static void Main(string[] args)
+        {
+            //SendMail();
+
+            Console.WriteLine(CodePassword.getCodPassword("testpass003"));
 
             Console.Write("\nНажмите любую клавишу для выхода...");
             Console.ReadKey();
